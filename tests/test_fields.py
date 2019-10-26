@@ -5,13 +5,13 @@ from datetime import datetime
 import unittest
 import xmltodict
 
-from wechatpy.utils import to_text
+from wechatx.utils import to_text
 
 
 class FieldsTestCase(unittest.TestCase):
 
     def test_string_field_to_xml(self):
-        from wechatpy.fields import StringField
+        from wechatx.fields import StringField
 
         name = 'Content'
         value = 'test'
@@ -24,7 +24,7 @@ class FieldsTestCase(unittest.TestCase):
         self.assertEqual(expected, field.to_xml(value))
 
     def test_integer_field_to_xml(self):
-        from wechatpy.fields import IntegerField
+        from wechatx.fields import IntegerField
 
         name = 'Content'
         value = 0
@@ -37,7 +37,7 @@ class FieldsTestCase(unittest.TestCase):
         self.assertEqual(expected, field.to_xml(value))
 
     def test_float_field_to_xml(self):
-        from wechatpy.fields import FloatField
+        from wechatx.fields import FloatField
 
         name = 'Content'
         value = 0.0
@@ -50,7 +50,7 @@ class FieldsTestCase(unittest.TestCase):
         self.assertEqual(expected, field.to_xml(value))
 
     def test_image_field_to_xml(self):
-        from wechatpy.fields import ImageField
+        from wechatx.fields import ImageField
 
         value = '123456'
         expected = """<Image>
@@ -63,7 +63,7 @@ class FieldsTestCase(unittest.TestCase):
         self.assertEqual(expected, field.to_xml(value))
 
     def test_voice_field_to_xml(self):
-        from wechatpy.fields import VoiceField
+        from wechatx.fields import VoiceField
 
         value = '123456'
         expected = """<Voice>
@@ -76,7 +76,7 @@ class FieldsTestCase(unittest.TestCase):
         self.assertEqual(expected, field.to_xml(value))
 
     def test_video_field_to_xml(self):
-        from wechatpy.fields import VideoField
+        from wechatx.fields import VideoField
 
         value = {
             'media_id': '123456',
@@ -97,7 +97,7 @@ class FieldsTestCase(unittest.TestCase):
         self.assertXMLEqual(expected, field.to_xml(value))
 
     def test_music_field_to_xml(self):
-        from wechatpy.fields import MusicField
+        from wechatx.fields import MusicField
 
         value = {
             'thumb_media_id': '123456',
@@ -124,7 +124,7 @@ class FieldsTestCase(unittest.TestCase):
         self.assertXMLEqual(expected, field.to_xml(value))
 
     def test_article_field_to_xml(self):
-        from wechatpy.fields import ArticlesField
+        from wechatx.fields import ArticlesField
 
         articles = [
             {
@@ -155,7 +155,7 @@ class FieldsTestCase(unittest.TestCase):
         assert expected in field.to_xml(articles)
 
     def test_base64encode_field_to_xml(self):
-        from wechatpy.fields import Base64EncodeField
+        from wechatx.fields import Base64EncodeField
 
         content = b'test'
         field = Base64EncodeField('Content')
@@ -165,7 +165,7 @@ class FieldsTestCase(unittest.TestCase):
         self.assertEqual(expected, field.to_xml(content))
 
     def test_base64decode_field_to_xml(self):
-        from wechatpy.fields import Base64DecodeField
+        from wechatx.fields import Base64DecodeField
 
         content = to_text(base64.b64encode(b'test'))
         field = Base64DecodeField('Content')
@@ -173,7 +173,7 @@ class FieldsTestCase(unittest.TestCase):
         self.assertEqual(expected, field.to_xml(content))
 
     def test_datetime_field_to_xml(self):
-        from wechatpy.fields import DateTimeField
+        from wechatx.fields import DateTimeField
 
         content = 1442401156
         content = datetime.fromtimestamp(content)

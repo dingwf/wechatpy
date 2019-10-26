@@ -4,8 +4,8 @@ import unittest
 
 import xmltodict
 
-from wechatpy.enterprise import crypto as _crypto
-from wechatpy.enterprise.crypto import WeChatCrypto
+from wechatx.enterprise import crypto as _crypto
+from wechatx.enterprise.crypto import WeChatCrypto
 
 
 class PrpCryptoMock(_crypto.PrpCrypto):
@@ -35,7 +35,7 @@ class CryptoTestCase(unittest.TestCase):
         )
 
     def test_check_signature_should_fail(self):
-        from wechatpy.exceptions import InvalidSignatureException
+        from wechatx.exceptions import InvalidSignatureException
 
         signature = 'dd6b9c95b495b3f7e2901bfbc76c664930ffdb96'
         timestamp = '1411443780'
@@ -111,7 +111,7 @@ class CryptoTestCase(unittest.TestCase):
         self.assertEqual('messense', msg_dict['FromUserName'])
 
     def test_wxa_decrypt_message(self):
-        from wechatpy.crypto import WeChatWxaCrypto
+        from wechatx.crypto import WeChatWxaCrypto
 
         appid = 'wx4f4bc4dec97d474b'
         session_key = 'tiihtNczf5v6AKRyjwEUhQ=='

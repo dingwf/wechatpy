@@ -4,7 +4,7 @@ import unittest
 import six
 
 
-from wechatpy.replies import TextReply, create_reply
+from wechatx.replies import TextReply, create_reply
 
 
 class CreateReplyTestCase(unittest.TestCase):
@@ -22,7 +22,7 @@ class CreateReplyTestCase(unittest.TestCase):
         self.assertTrue(isinstance(reply, six.text_type))
 
     def test_create_reply_with_message(self):
-        from wechatpy.messages import TextMessage
+        from wechatx.messages import TextMessage
 
         msg = TextMessage({
             'FromUserName': 'user1',
@@ -138,7 +138,7 @@ class CreateReplyTestCase(unittest.TestCase):
         self.assertRaises(AttributeError, create_reply, articles)
 
     def test_create_empty_reply(self):
-        from wechatpy.replies import EmptyReply
+        from wechatx.replies import EmptyReply
 
         reply = create_reply('')
         self.assertTrue(isinstance(reply, EmptyReply))

@@ -7,7 +7,7 @@ import os
 
 import pytest
 
-from wechatpy.utils import ObjectDict, check_signature, check_wxa_signature
+from wechatx.utils import ObjectDict, check_signature, check_wxa_signature
 
 _TESTS_PATH = os.path.abspath(os.path.dirname(__file__))
 _CERTS_PATH = os.path.join(_TESTS_PATH, 'certs')
@@ -37,7 +37,7 @@ class UtilityTestCase(unittest.TestCase):
         check_signature(token, signature, timestamp, nonce)
 
     def test_check_signature_should_fail(self):
-        from wechatpy.exceptions import InvalidSignatureException
+        from wechatx.exceptions import InvalidSignatureException
 
         token = 'test'
         signature = 'f21891de399b4e33a1a93c9a7b8a8fffb5a443fe'
@@ -50,7 +50,7 @@ class UtilityTestCase(unittest.TestCase):
         )
 
     def test_check_wxa_signature(self):
-        from wechatpy.exceptions import InvalidSignatureException
+        from wechatx.exceptions import InvalidSignatureException
 
         # 微信官方示例
         raw_data = '{"nickName":"Band","gender":1,"language":"zh_CN","city":"Guangzhou","province":"Guangdong","country":"CN","avatarUrl":"http://wx.qlogo.cn/mmopen/vi_32/1vZvI39NWFQ9XM4LtQpFrQJ1xlgZxx3w7bQxKARol6503Iuswjjn6nIGBiaycAjAtpujxyzYsrztuuICqIM5ibXQ/0"}' # noqa
@@ -72,7 +72,7 @@ class UtilityTestCase(unittest.TestCase):
         check_wxa_signature(session_key, raw_data, client_signature)
 
     def test_wechat_card_signer(self):
-        from wechatpy.utils import WeChatSigner
+        from wechatx.utils import WeChatSigner
 
         signer = WeChatSigner()
         signer.add_data('789')
@@ -84,7 +84,7 @@ class UtilityTestCase(unittest.TestCase):
 
     @pytest.mark.skipif(skip_if_no_cryptography(), reason='cryptography not installed')
     def test_rsa_encrypt_decrypt(self):
-        from wechatpy.pay.utils import rsa_encrypt, rsa_decrypt
+        from wechatx.pay.utils import rsa_encrypt, rsa_decrypt
         target_string = 'hello world'
         with open(os.path.join(_CERTS_PATH, 'rsa_public_key.pem'), 'rb') as public_fp, \
                 open(os.path.join(_CERTS_PATH, 'rsa_private_key.pem'), 'rb') as private_fp:

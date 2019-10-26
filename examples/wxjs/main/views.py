@@ -7,7 +7,7 @@ from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from django.shortcuts import render
 
-from wechatpy import WeChatClient
+from wechatx import WeChatClient
 
 
 def index(request):

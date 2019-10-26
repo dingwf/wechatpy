@@ -2,13 +2,13 @@
 from __future__ import absolute_import, unicode_literals
 import unittest
 from datetime import datetime
-from wechatpy import parse_message
+from wechatx import parse_message
 
 
 class EventsTestCase(unittest.TestCase):
 
     def test_scan_code_push_event(self):
-        from wechatpy.events import ScanCodePushEvent
+        from wechatx.events import ScanCodePushEvent
 
         xml = """<xml>
         <ToUserName><![CDATA[gh_e136c6e50636]]></ToUserName>
@@ -29,7 +29,7 @@ class EventsTestCase(unittest.TestCase):
         self.assertEqual('1', event.scan_result)
 
     def test_scan_code_waitmsg_event(self):
-        from wechatpy.events import ScanCodeWaitMsgEvent
+        from wechatx.events import ScanCodeWaitMsgEvent
 
         xml = """<xml>
         <ToUserName><![CDATA[gh_e136c6e50636]]></ToUserName>
@@ -50,7 +50,7 @@ class EventsTestCase(unittest.TestCase):
         self.assertEqual('2', event.scan_result)
 
     def test_pic_sysphoto_event(self):
-        from wechatpy.events import PicSysPhotoEvent
+        from wechatx.events import PicSysPhotoEvent
 
         xml = """<xml>
         <ToUserName><![CDATA[gh_e136c6e50636]]></ToUserName>
@@ -78,7 +78,7 @@ class EventsTestCase(unittest.TestCase):
         )
 
     def test_pic_photo_or_album_event(self):
-        from wechatpy.events import PicPhotoOrAlbumEvent
+        from wechatx.events import PicPhotoOrAlbumEvent
 
         xml = """<xml>
         <ToUserName><![CDATA[gh_e136c6e50636]]></ToUserName>
@@ -106,7 +106,7 @@ class EventsTestCase(unittest.TestCase):
         )
 
     def test_pic_wechat_event(self):
-        from wechatpy.events import PicWeChatEvent
+        from wechatx.events import PicWeChatEvent
 
         xml = """<xml>
         <ToUserName><![CDATA[gh_e136c6e50636]]></ToUserName>
@@ -134,7 +134,7 @@ class EventsTestCase(unittest.TestCase):
         )
 
     def test_location_select_event(self):
-        from wechatpy.events import LocationSelectEvent
+        from wechatx.events import LocationSelectEvent
 
         xml = """<xml>
         <ToUserName><![CDATA[gh_e136c6e50636]]></ToUserName>
@@ -160,7 +160,7 @@ class EventsTestCase(unittest.TestCase):
         self.assertEqual('广州市海珠区客村艺苑路 106号', event.label)
 
     def test_merchant_order_event(self):
-        from wechatpy.events import MerchantOrderEvent
+        from wechatx.events import MerchantOrderEvent
 
         xml = """<xml>
         <ToUserName><![CDATA[weixin_media1]]></ToUserName>
@@ -183,7 +183,7 @@ class EventsTestCase(unittest.TestCase):
         self.assertEqual('10001:1000012;10002:100021', event.sku_info)
 
     def test_kf_create_session_event(self):
-        from wechatpy.events import KfCreateSessionEvent
+        from wechatx.events import KfCreateSessionEvent
 
         xml = """<xml>
         <ToUserName><![CDATA[touser]]></ToUserName>
@@ -199,7 +199,7 @@ class EventsTestCase(unittest.TestCase):
         self.assertEqual('test1@test', event.account)
 
     def test_kf_close_session_event(self):
-        from wechatpy.events import KfCloseSessionEvent
+        from wechatx.events import KfCloseSessionEvent
 
         xml = """<xml>
         <ToUserName><![CDATA[touser]]></ToUserName>
@@ -215,7 +215,7 @@ class EventsTestCase(unittest.TestCase):
         self.assertEqual('test1@test', event.account)
 
     def test_kf_switch_session_event(self):
-        from wechatpy.events import KfSwitchSessionEvent
+        from wechatx.events import KfSwitchSessionEvent
 
         xml = """<xml>
         <ToUserName><![CDATA[touser]]></ToUserName>
@@ -233,7 +233,7 @@ class EventsTestCase(unittest.TestCase):
         self.assertEqual('test2@test', event.to_account)
 
     def test_template_send_job_finish_event(self):
-        from wechatpy.events import TemplateSendJobFinishEvent
+        from wechatx.events import TemplateSendJobFinishEvent
 
         xml = """<xml>
         <ToUserName><![CDATA[touser]]></ToUserName>
@@ -251,7 +251,7 @@ class EventsTestCase(unittest.TestCase):
         self.assertEqual('success', event.status)
 
     def test_shakearound_user_shake_event(self):
-        from wechatpy.events import ShakearoundUserShakeEvent
+        from wechatx.events import ShakearoundUserShakeEvent
 
         xml = """<xml>
         <ToUserName><![CDATA[toUser]]></ToUserName>
@@ -293,7 +293,7 @@ class EventsTestCase(unittest.TestCase):
         self.assertEqual(2, len(event.around_beacons))
 
     def test_wifi_connected_event(self):
-        from wechatpy.events import WiFiConnectedEvent
+        from wechatx.events import WiFiConnectedEvent
 
         xml = """
         <xml>
@@ -316,7 +316,7 @@ class EventsTestCase(unittest.TestCase):
         self.assertEqual('00:1f:7a:ad:5c:a8', event.bssid)
 
     def test_qualification_verify_success_event(self):
-        from wechatpy.events import QualificationVerifySuccessEvent
+        from wechatx.events import QualificationVerifySuccessEvent
 
         xml = """
         <xml>
@@ -332,7 +332,7 @@ class EventsTestCase(unittest.TestCase):
         self.assertTrue(isinstance(event.expired_time, datetime))
 
     def test_qualification_verify_fail_event(self):
-        from wechatpy.events import QualificationVerifyFailEvent
+        from wechatx.events import QualificationVerifyFailEvent
 
         xml = """
         <xml>
@@ -350,7 +350,7 @@ class EventsTestCase(unittest.TestCase):
         self.assertEqual(event.fail_reason, 'by time')
 
     def test_naming_verify_success_event(self):
-        from wechatpy.events import NamingVerifySuccessEvent
+        from wechatx.events import NamingVerifySuccessEvent
 
         xml = """
         <xml>
@@ -366,7 +366,7 @@ class EventsTestCase(unittest.TestCase):
         self.assertTrue(isinstance(event.expired_time, datetime))
 
     def test_naming_verify_fail_event(self):
-        from wechatpy.events import NamingVerifyFailEvent
+        from wechatx.events import NamingVerifyFailEvent
 
         xml = """
         <xml>
@@ -384,7 +384,7 @@ class EventsTestCase(unittest.TestCase):
         self.assertEqual(event.fail_reason, 'by time')
 
     def test_annual_renew_event(self):
-        from wechatpy.events import AnnualRenewEvent
+        from wechatx.events import AnnualRenewEvent
 
         xml = """
         <xml>
@@ -400,7 +400,7 @@ class EventsTestCase(unittest.TestCase):
         self.assertTrue(isinstance(event.expired_time, datetime))
 
     def test_verify_expired_event(self):
-        from wechatpy.events import VerifyExpiredEvent
+        from wechatx.events import VerifyExpiredEvent
 
         xml = """
         <xml>

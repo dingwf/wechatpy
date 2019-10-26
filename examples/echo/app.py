@@ -3,9 +3,9 @@ from __future__ import absolute_import, unicode_literals
 import os
 
 from flask import Flask, request, abort, render_template
-from wechatpy import parse_message, create_reply
-from wechatpy.utils import check_signature
-from wechatpy.exceptions import (
+from wechatx import parse_message, create_reply
+from wechatx.utils import check_signature
+from wechatx.exceptions import (
     InvalidSignatureException,
     InvalidAppIdException,
 )
@@ -50,7 +50,7 @@ def wechat():
         return reply.render()
     else:
         # encryption mode
-        from wechatpy.crypto import WeChatCrypto
+        from wechatx.crypto import WeChatCrypto
 
         crypto = WeChatCrypto(TOKEN, AES_KEY, APPID)
         try:

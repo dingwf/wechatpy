@@ -1,10 +1,10 @@
 from __future__ import absolute_import, unicode_literals
 import os
 from flask import Flask, request, abort, render_template
-from wechatpy.enterprise.crypto import WeChatCrypto
-from wechatpy.exceptions import InvalidSignatureException
-from wechatpy.enterprise.exceptions import InvalidCorpIdException
-from wechatpy.enterprise import parse_message, create_reply
+from wechatx.enterprise.crypto import WeChatCrypto
+from wechatx.exceptions import InvalidSignatureException
+from wechatx.enterprise.exceptions import InvalidCorpIdException
+from wechatx.enterprise import parse_message, create_reply
 
 
 TOKEN = os.getenv('WECHAT_TOKEN', '123456')

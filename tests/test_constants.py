@@ -3,7 +3,7 @@ from __future__ import absolute_import, unicode_literals
 
 import unittest
 
-from wechatpy.constants import WeChatErrorCode
+from wechatx.constants import WeChatErrorCode
 
 
 class WeChatErrorCodeTestCase(unittest.TestCase):

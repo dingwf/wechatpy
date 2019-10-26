@@ -2,7 +2,7 @@
 from __future__ import absolute_import, unicode_literals
 import unittest
 
-from wechatpy import parse_message
+from wechatx import parse_message
 
 
 class ParseMessageTestCase(unittest.TestCase):
@@ -213,7 +213,7 @@ class ParseMessageTestCase(unittest.TestCase):
         self.assertEqual('www.qq.com', msg.url)
 
     def test_parse_unknown_message(self):
-        from wechatpy.messages import UnknownMessage
+        from wechatx.messages import UnknownMessage
 
         xml = """<xml>
         <ToUserName><![CDATA[toUser]]></ToUserName>
@@ -228,7 +228,7 @@ class ParseMessageTestCase(unittest.TestCase):
         self.assertTrue(isinstance(msg, UnknownMessage))
 
     def test_parse_subscribe_scan_product_event(self):
-        from wechatpy.events import SubscribeScanProductEvent
+        from wechatx.events import SubscribeScanProductEvent
 
         xml = """<xml>
         <ToUserName><![CDATA[gh_fbe8a958756e]]></ToUserName>
@@ -262,7 +262,7 @@ class ParseMessageTestCase(unittest.TestCase):
 
     def test_parse_user_authorize_invoice_event(self):
         """ Test parsing xml for UserAuthorizeInvoiceEvent """
-        from wechatpy.events import UserAuthorizeInvoiceEvent
+        from wechatx.events import UserAuthorizeInvoiceEvent
 
         xml = """<xml>
         <ToUserName><![CDATA[gh_fc0a06a20993]]></ToUserName>
@@ -285,7 +285,7 @@ class ParseMessageTestCase(unittest.TestCase):
 
     def test_parse_update_invoice_status_event(self):
         """ Test parsing xml for UpdateInvoiceStatusEvent """
-        from wechatpy.events import UpdateInvoiceStatusEvent
+        from wechatx.events import UpdateInvoiceStatusEvent
 
         xml = """<xml>
         <ToUserName><![CDATA[gh_9e1765b5568e]]></ToUserName>
@@ -306,7 +306,7 @@ class ParseMessageTestCase(unittest.TestCase):
 
     def test_parse_submit_invoice_title_event(self):
         """ Test parsing xml for SubmitInvoiceTitleEvent """
-        from wechatpy.events import SubmitInvoiceTitleEvent
+        from wechatx.events import SubmitInvoiceTitleEvent
 
         xml = """<xml>
         <ToUserName><![CDATA[gh_fc0a06a20993]]></ToUserName>
@@ -336,7 +336,7 @@ class ParseMessageTestCase(unittest.TestCase):
         self.assertEqual('InvoiceUserTitleBusinessType', msg.title_type)
 
     def test_parse_device_text_event(self):
-        from wechatpy.events import DeviceTextEvent
+        from wechatx.events import DeviceTextEvent
 
         xml = """<xml>
         <ToUserName><![CDATA[toUser]]></ToUserName>
@@ -359,7 +359,7 @@ class ParseMessageTestCase(unittest.TestCase):
         self.assertEqual('123', msg.device_id)
 
     def test_parse_device_bind_event(self):
-        from wechatpy.events import DeviceBindEvent
+        from wechatx.events import DeviceBindEvent
 
         xml = """<xml>
         <ToUserName><![CDATA[toUser]]></ToUserName>

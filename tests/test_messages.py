@@ -8,7 +8,7 @@ from datetime import datetime
 class MessagesTestCase(unittest.TestCase):
 
     def test_base_message(self):
-        from wechatpy.messages import TextMessage
+        from wechatx.messages import TextMessage
 
         timestamp = int(time.time())
         msg = TextMessage({
@@ -25,7 +25,7 @@ class MessagesTestCase(unittest.TestCase):
         self.assertTrue(isinstance(msg.create_time, datetime))
 
     def test_text_message(self):
-        from wechatpy.messages import TextMessage
+        from wechatx.messages import TextMessage
 
         msg = TextMessage({
             'Content': 'test',
@@ -34,7 +34,7 @@ class MessagesTestCase(unittest.TestCase):
         self.assertEqual('test', msg.content)
 
     def test_image_message(self):
-        from wechatpy.messages import ImageMessage
+        from wechatx.messages import ImageMessage
 
         msg = ImageMessage({
             'PicUrl': 'http://www.qq.com/1.png',
@@ -43,7 +43,7 @@ class MessagesTestCase(unittest.TestCase):
         self.assertEqual('http://www.qq.com/1.png', msg.image)
 
     def test_voice_message(self):
-        from wechatpy.messages import VoiceMessage
+        from wechatx.messages import VoiceMessage
 
         msg = VoiceMessage({
             'MediaId': '123456',
@@ -56,7 +56,7 @@ class MessagesTestCase(unittest.TestCase):
         self.assertEqual('test', msg.recognition)
 
     def test_video_message(self):
-        from wechatpy.messages import VideoMessage
+        from wechatx.messages import VideoMessage
 
         msg = VideoMessage({
             'MediaId': '123456',
@@ -67,7 +67,7 @@ class MessagesTestCase(unittest.TestCase):
         self.assertEqual('123456', msg.thumb_media_id)
 
     def test_location_message(self):
-        from wechatpy.messages import LocationMessage
+        from wechatx.messages import LocationMessage
 
         msg = LocationMessage({
             'Location_X': '123',
@@ -82,7 +82,7 @@ class MessagesTestCase(unittest.TestCase):
         self.assertEqual('test', msg.label)
 
     def test_link_message(self):
-        from wechatpy.messages import LinkMessage
+        from wechatx.messages import LinkMessage
 
         msg = LinkMessage({
             'Title': 'test',

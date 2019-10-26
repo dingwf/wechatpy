@@ -6,8 +6,8 @@ import unittest
 
 from httmock import urlmatch, HTTMock, response
 
-from wechatpy import WeChatClient
-from wechatpy.utils import json
+from wechatx import WeChatClient
+from wechatx.utils import json
 
 
 _TESTS_PATH = os.path.abspath(os.path.dirname(__file__))
@@ -41,7 +41,7 @@ class WeChatSessionTestCase(unittest.TestCase):
     secret = '123456'
 
     def test_memory_session_storage_init(self):
-        from wechatpy.session.memorystorage import MemoryStorage
+        from wechatx.session.memorystorage import MemoryStorage
 
         client = WeChatClient(self.app_id, self.secret)
         self.assertTrue(isinstance(client.session, MemoryStorage))
@@ -56,7 +56,7 @@ class WeChatSessionTestCase(unittest.TestCase):
 
     def test_redis_session_storage_init(self):
         from redis import Redis
-        from wechatpy.session.redisstorage import RedisStorage
+        from wechatx.session.redisstorage import RedisStorage
 
         redis = Redis()
         session = RedisStorage(redis)
@@ -65,7 +65,7 @@ class WeChatSessionTestCase(unittest.TestCase):
 
     def test_redis_session_storage_access_token(self):
         from redis import Redis
-        from wechatpy.session.redisstorage import RedisStorage
+        from wechatx.session.redisstorage import RedisStorage
 
         redis = Redis()
         session = RedisStorage(redis)
@@ -81,7 +81,7 @@ class WeChatSessionTestCase(unittest.TestCase):
             return
 
         from pymemcache.client import Client
-        from wechatpy.session.memcachedstorage import MemcachedStorage
+        from wechatx.session.memcachedstorage import MemcachedStorage
 
         servers = ("127.0.0.1", 11211)
         memcached = Client(servers)
@@ -94,7 +94,7 @@ class WeChatSessionTestCase(unittest.TestCase):
             return
 
         from pymemcache.client import Client
-        from wechatpy.session.memcachedstorage import MemcachedStorage
+        from wechatx.session.memcachedstorage import MemcachedStorage
 
         servers = ("127.0.0.1", 11211)
         memcached = Client(servers)
@@ -107,7 +107,7 @@ class WeChatSessionTestCase(unittest.TestCase):
             self.assertEqual('1234567890', client.access_token)
 
     def test_shove_storage_init(self):
-        from wechatpy.session.shovestorage import ShoveStorage
+        from wechatx.session.shovestorage import ShoveStorage
 
         uri = 'memory://'
         client = WeChatClient(self.app_id, self.secret, session=uri)
@@ -115,7 +115,7 @@ class WeChatSessionTestCase(unittest.TestCase):
         self.assertEqual('wechatpy', client.session.prefix)
 
     def test_shove_storage_init_with_prefix(self):
-        from wechatpy.session.shovestorage import ShoveStorage
+        from wechatx.session.shovestorage import ShoveStorage
 
         uri = 'memory://?prefix=custom_prefix'
         client = WeChatClient(self.app_id, self.secret, session=uri)

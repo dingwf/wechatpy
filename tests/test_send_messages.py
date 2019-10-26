@@ -3,8 +3,8 @@ from __future__ import absolute_import, unicode_literals
 
 import unittest
 
-from wechatpy import WeChatClient
-from wechatpy.client.api import WeChatMessage
+from wechatx import WeChatClient
+from wechatx.client.api import WeChatMessage
 
 
 class SendMessageTestCase(unittest.TestCase):

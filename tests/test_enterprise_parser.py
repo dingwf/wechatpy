@@ -2,7 +2,7 @@
 from __future__ import absolute_import, unicode_literals
 import unittest
 
-from wechatpy.enterprise import parse_message
+from wechatx.enterprise import parse_message
 
 
 class ParseMessageTestCase(unittest.TestCase):
@@ -172,7 +172,7 @@ class ParseMessageTestCase(unittest.TestCase):
         self.assertEqual('www.qq.com', msg.url)
 
     def test_parse_unknown_message(self):
-        from wechatpy.messages import UnknownMessage
+        from wechatx.messages import UnknownMessage
 
         xml = """<xml>
         <ToUserName><![CDATA[toUser]]></ToUserName>
